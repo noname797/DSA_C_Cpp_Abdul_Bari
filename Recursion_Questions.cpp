@@ -170,3 +170,55 @@ int main(){
 }
 
 
+// Sine series recursion
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+
+double sine(double x, double n){
+	static double s=1;
+	double r,m = (2*n-1);
+	
+	if ((n==0)|| (n==1))
+		return s;
+		
+	s = 1-(pow(x,2)/(m*(m-1)))*s;
+	
+	return sine(x,n-1);
+}
+
+;
+int main(){
+	double x=5, n=10;
+	double r = x*sine(x,n);
+	printf("%lf \n",r);
+	return 0;
+}
+
+
+// Cosine series using recursion
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+
+double cos(double x, double n){
+	static double s=1;
+	double r,m = 2*(n-1);
+	
+	if ((n==0)||(n==1))
+		return s;
+		
+	s = 1-(pow(x,2)/(m*(m-1)))*s;
+	
+	return cos(x,n-1);
+}
+
+
+int main(){
+	double x=5, n=10;
+	double r = cos(x,n);
+	printf("%lf \n",r);
+	return 0;
+}
