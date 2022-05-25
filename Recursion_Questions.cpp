@@ -222,3 +222,169 @@ int main(){
 	printf("%lf \n",r);
 	return 0;
 }
+
+// Fibonnaci Series using iteration
+
+#include<iostream>
+
+using namespace std;
+
+int fib(int n);
+
+int main(){
+	int r = fib(7);
+	printf("%d",r);
+}
+
+int b = 0, f = 1 , s =0;
+
+int fib(int n){
+	if (n<=1){
+		return n;
+	}
+	for (int i=2; i<n;i++){
+		s = f +b;
+		b = f;
+		f = s;
+	}
+	
+	return b+f;
+}
+
+// Fibonnaci Series using recursion
+
+#include<iostream>
+
+using namespace std;
+
+int fib(int	n);
+
+int main(){
+	int r = fib(7);
+	printf("%d",r);
+}
+
+int fib(int n){
+	if (n<=1){
+		return n;
+	}
+	return fib(n-1)+fib(n-2);
+}
+
+// Fibonnaci Series using recursion
+
+#include<iostream>
+
+using namespace std;
+
+int fib(int	n);
+
+int f[10];
+
+int main(){
+	for (int i=0; i<10;i++)
+		f[i] = -1;
+	
+	int r = fib(7);
+	printf("%d",r);
+}
+
+
+
+int fib(int n){
+	if (n<=1){
+		f[n] = n;
+		return n;
+		}
+	else{
+		if (f[n-2] == -1)
+			f[n-2] = fib(n-2);
+		if (f[n-1] == -1)
+			f[n-1] = fib(n-1);
+		
+		return f[n-2] + f[n-1];
+		
+		
+	}
+}
+
+// nCr using direct method
+#include<iostream>
+
+using namespace std;
+
+int fact(int n){
+	if (n==0) return 1;
+	return fact(n-1)*n;
+}
+
+int nCr(int n,int r){
+	int num,den;
+	num = fact(n);
+	den = fact(r)*fact(n-r);
+	
+	return num/den;
+}
+
+int main(){
+	printf("%d \n", nCr(5,2));
+	return 0;
+}
+
+// nCr using basic maths
+#include<iostream>
+
+using namespace std;
+
+double bruh(double n,double r){ // if we use int then due to datatype calculations ans are coming wrong
+	
+	if ((n==0) || (n==r) || (r==0))
+		return 1;
+		
+	return (n/(n-r))*bruh(n-1,r);
+
+}
+
+int main(){
+	printf("%d \n", bruh(5,1)); // %lf for float
+	return 0;
+}
+
+
+// nCr using pascal's traingle
+#include<iostream>
+
+using namespace std;
+
+int nCr(int n, int r){
+	if (n==r || r==0)
+		return 1;
+	return nCr(n-1,r-1) + nCr(n-1,r);
+}
+
+int main(){
+	printf("%d \n",nCr(5,1));
+	return 0;
+}
+
+//Tower of hanoi using recursion
+
+#include<iostream>
+
+using namespace std;
+
+void TOH(int n,int a,int b,int c){
+	if(n>0){
+		TOH(n-1, a,c,b);
+		printf("(%d,%d)\n",a,c);
+		TOH(n-1,b,a,c);
+	}
+	
+}
+
+
+int main(){
+	TOH(3,1,2,3);
+	return 0;
+
+}
